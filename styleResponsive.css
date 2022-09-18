@@ -129,11 +129,12 @@
 .option{
     position: relative;
     align-items: center;
-    width: 48%;
+    width: 49%;
     height: 45%;
     cursor: pointer;
     text-align: center;
-    line-height: 50px;
+    font-size: 12px;
+    line-height: 20px;
     border-radius: 15px;
     border: 2px solid #BCC2CF;
     border-bottom: 7px solid #BCC2CF;
