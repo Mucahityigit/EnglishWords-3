@@ -138,7 +138,7 @@
     border-radius: 15px;
     border: 2px solid #BCC2CF;
     border-bottom: 7px solid #BCC2CF;
-    z-index: 5;
+    outline: none;
 }
 .option:hover{
     transform: translateY(-3px);
