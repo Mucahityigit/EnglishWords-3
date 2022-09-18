@@ -1641,35 +1641,34 @@
             var toplam = cevaplar.length;
             function callQuestion(){
                 word.innerHTML = kelimeler[sayi];
-                for(var i=0; i<4; i++){
-                    options[option1].innerHTML= cevaplar[sayi];
-                    options[option2].innerHTML= cevaplar[randomOptionsSayi()];
-                    options[option3].innerHTML= cevaplar[randomOptionsSayi()];
-                    options[option4].innerHTML= cevaplar[randomOptionsSayi()];
-                    options[i].addEventListener("click", function(e){
-                        if(e.target.textContent == cevaplar[sayi]){
-                            e.target.classList.add("dogru");
-                            setTimeout(function(){
-                               sayi = randomSayi();
-                               e.target.classList.remove("dogru");
-                               callQuestion();
-                            },1500)
-                        }else{
-                            e.target.classList.add("yanlis");
-                            options[option1].classList.add("dogru");
-                            setTimeout(function(){
-                               sayi = randomSayi();
-                               e.target.classList.remove("yanlis");
-                               options[option1].classList.remove("dogru");
-                               callQuestion();
-                            },1500)
-                        }
-                    });
-                }
+                options[option1].innerHTML= cevaplar[sayi];
+                options[option2].innerHTML= cevaplar[randomOptionsSayi()];
+                options[option3].innerHTML= cevaplar[randomOptionsSayi()];
+                options[option4].innerHTML= cevaplar[randomOptionsSayi()];
+            }
+            callQuestion();
+            for(var i=0; i<options.length; i++){
+                options[i].addEventListener("click", function(e){
+                    if(e.target.textContent == cevaplar[sayi]){
+                        e.target.classList.add("dogru");
+                        setTimeout(function(){
+                           sayi = randomSayi();
+                           e.target.classList.remove("dogru");
+                           callQuestion();
+                        },1500)
+                    }else{
+                        e.target.classList.add("yanlis");
+                        options[option1].classList.add("dogru");
+                        setTimeout(function(){
+                           sayi = randomSayi();
+                           e.target.classList.remove("yanlis");
+                           options[option1].classList.remove("dogru");
+                           callQuestion();
+                        },1500)
+                    }
+                });
             }
             
-            callQuestion();
-
         function randomSayi(){
             let sayi = Math.floor(Math.random()*cevaplar.length-1);
 
@@ -1692,6 +1691,9 @@
         }
 
         function randomOptionSayi(){
+            if(sayilarOptions.length > 4){
+                sayilarOptions = [];
+            }
             let sayi = Math.floor(Math.random()*4);  
            if(sayilarOptions.indexOf(sayi)==-1){
             sayilarOptions.push(sayi);
