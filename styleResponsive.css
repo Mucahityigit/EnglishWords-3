@@ -93,6 +93,30 @@
     border-bottom: 7px solid #d01115;
 
 }
+
+.score{
+    display: block;
+    width: 50%;
+    height: 30px;
+    margin: 20px auto;
+}
+#true,#wrong{
+    display: inline-block;
+    width: 44%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+#true{
+    background-color: #10ac84;
+}
+#wrong{
+    background-color: #ee5253;
+    margin-left: 21px;
+}
 @media screen and (max-width: 600px) {
 *{
     margin: 0;
@@ -187,6 +211,29 @@
     border: 2px solid #d01115;
     border-bottom: 7px solid #d01115;
 
+}
+.score{
+    display: block;
+    width: 50%;
+    height: 30px;
+    margin: 20px auto;
+}
+#true,#wrong{
+    display: inline-block;
+    width: 43%;
+    height: 100%;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-size: 22px;
+    font-weight: bold;
+}
+#true{
+    background-color: #10ac84;
+}
+#wrong{
+    background-color: #ee5253;
+    margin-left: 21px;
 }
 
 }

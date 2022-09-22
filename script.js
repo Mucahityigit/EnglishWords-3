@@ -1622,17 +1622,17 @@
         var word = document.getElementById('word');
         var options = document.getElementsByClassName('option');
         var btn = document.getElementById('btn');
+        var correctNumber = document.getElementById('true');
+        var wrongNumber = document.getElementById('wrong');
         let sayilar=[];
         let sayilarOptions=[];
         let sayilarOptionsSayi=[];
         let kelimeler=[];
         let cevaplar=[];
         let telaffuz=[];
+        let dogru=0, yanlis=0;
         let option1 = randomOptionSayi();
-        let option2 = randomOptionSayi();
-        let option3 = randomOptionSayi();
-        let option4 = randomOptionSayi();
-        verbs.forEach(verb => {
+            verbs.forEach(verb => {
             kelimeler.push(verb.english);
             cevaplar.push(verb.turkish);              
             telaffuz.push(verb.pronunciation);              
@@ -1642,33 +1642,39 @@
             function callQuestion(){
                 word.innerHTML = kelimeler[sayi];
                 options[option1].innerHTML= cevaplar[sayi];
-                options[option2].innerHTML= cevaplar[randomOptionsSayi()];
-                options[option3].innerHTML= cevaplar[randomOptionsSayi()];
-                options[option4].innerHTML= cevaplar[randomOptionsSayi()];
+                options[randomOptionSayi()].innerHTML= cevaplar[randomOptionsSayi()];
+                options[randomOptionSayi()].innerHTML= cevaplar[randomOptionsSayi()];
+                options[randomOptionSayi()].innerHTML= cevaplar[randomOptionsSayi()];
             }
             callQuestion();
             for(var i=0; i<options.length; i++){
                 options[i].addEventListener("click", function(e){
                     if(e.target.textContent == cevaplar[sayi]){
                         e.target.classList.add("dogru");
+                        dogru++;
+                        correctNumber.innerHTML = dogru;
                         setTimeout(function(){
                            sayi = randomSayi();
                            e.target.classList.remove("dogru");
+                           option1 = randomOptionSayi();
                            callQuestion();
                         },1500)
                     }else{
+                        yanlis++;
+                        wrongNumber.innerHTML = yanlis;
                         e.target.classList.add("yanlis");
                         options[option1].classList.add("dogru");
                         setTimeout(function(){
                            sayi = randomSayi();
                            e.target.classList.remove("yanlis");
                            options[option1].classList.remove("dogru");
+                           option1 = randomOptionSayi();
                            callQuestion();
                         },1500)
                     }
                 });
             }
-            
+
         function randomSayi(){
             let sayi = Math.floor(Math.random()*cevaplar.length-1);
 
@@ -1686,12 +1692,12 @@
                 sayilarOptionsSayi.push(sayi);
                 return sayi;
             }else{
-                return randomSayi();
+                return randomOptionsSayi();
             }
         }
 
         function randomOptionSayi(){
-            if(sayilarOptions.length > 4){
+            if(sayilarOptions.length > 3){
                 sayilarOptions = [];
             }
             let sayi = Math.floor(Math.random()*4);  
